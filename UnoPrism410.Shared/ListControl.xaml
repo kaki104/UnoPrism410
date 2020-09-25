@@ -5,14 +5,27 @@
     xmlns:local="using:UnoPrism410"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:prismMvvm="using:Prism.Mvvm"
+    xmlns:prismMvvm="using:Prism.Mvvm" 
+    xmlns:commons="using:UnoPrism410.Commons"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d"
     d:DesignHeight="300"
-    d:DesignWidth="400">
-
+    d:DesignWidth="400"
+    x:Name="Root">
+    <UserControl.Resources>
+        <commons:ViewModelResource x:Key="ViewModelResource" 
+                                   ViewModel="{Binding ElementName=Root, Path=DataContext}"/>
+    </UserControl.Resources>
     <Grid>
-        <ListView ItemsSource="{Binding Texts}"
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Button Content="ShowDialog2"
+                    Command="{Binding TestCommand}"/>
+        </StackPanel>
+        <!--<ListView ItemsSource="{Binding Texts}"
                   x:Name="TextListView2">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -22,11 +35,15 @@
                             <ColumnDefinition Width="Auto"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Text="{Binding}"/>
-                        <Button Grid.Column="1" Content="Test2" 
+                        <StackPanel Grid.Column="1">
+                            <Button Content="Test2" 
                                 Command="{Binding DataContext.TestCommand, ElementName=TextListView2}"/>
+                            <Button Content="Test3" 
+                                Command="{Binding Source={StaticResource ViewModelResource}, Path=ViewModel.TestCommand}"/>
+                        </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
     </Grid>
 </UserControl>

@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Windows.Input;
 
@@ -17,14 +18,17 @@ namespace UnoPrism410
             get { return _title; }
             set { SetProperty(ref _title, value); }
         }
+
+        private IDialogService _dialogService;
         #endregion
 
         public IList<string> Texts { get; set; }
 
         public ICommand TestCommand { get; set; }
 
-        public ListViewModel()
+        public ListViewModel(IDialogService dialogService)
         {
+            _dialogService = dialogService;
             Texts = new List<string>
             {
                 "Item1",
@@ -39,6 +43,12 @@ namespace UnoPrism410
 
         private void OnTest()
         {
+            //Error
+            _dialogService.ShowDialog("ListControl", new DialogParameters(),
+                callback => 
+                { 
+
+                });
         }
 
         public event Action<IDialogResult> RequestClose;
