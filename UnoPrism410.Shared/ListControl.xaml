@@ -18,14 +18,14 @@
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <Button Content="ShowDialog2"
+            <Button Content="ShowDialog2 - Error"
                     Command="{Binding TestCommand}"/>
         </StackPanel>
-        <!--<ListView ItemsSource="{Binding Texts}"
+        <ListView ItemsSource="{Binding Texts}"
                   x:Name="TextListView2">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -44,6 +44,6 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>-->
+        </ListView>
     </Grid>
 </UserControl>

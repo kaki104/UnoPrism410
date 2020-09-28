@@ -21,6 +21,7 @@
             <Button Content="Show Dialog"
                     Command="{Binding ShowCommand}"/>
         </StackPanel>
-        <ContentControl Grid.Row="1" prismRegions:RegionManager.RegionName="ContentRegion" />
+        <ContentControl Grid.Row="1" 
+                        prismRegions:RegionManager.RegionName="ContentRegion" />
     </Grid>
 </ContentControl>
